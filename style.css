@@ -1,21 +1,29 @@
 body {
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 0px;
 }
 header {
-    background-color: rgb(37, 1, 48);
+    background-color: rgb(8, 32, 41);
+    margin: 0px;
+    padding: 1px;
     height: 100px;
     max-width: 100%;
 }
+header img {
+    width: 100px;
+    height: 100px;
+    margin-left: 20px;
+    margin-top: 10px;
+}
 
 main {
-    /* background-color: rgb(46, 42, 85); */
+    background-color: rgb(5, 23, 30);
     height: 1000px;
-    background-image: url("./img/background.jpg");
+    /* background-image: url("./img/background.jpg"); */
 }
 
 footer {
-    background-color: rgb(37, 1, 48);
+    background-color: rgb(8, 32, 41);
     height: 100px;
     max-width: 100%;
 }
