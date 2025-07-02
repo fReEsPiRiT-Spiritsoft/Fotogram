@@ -1,0 +1,21 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+header {
+    background-color: rgb(37, 1, 48);
+    height: 100px;
+    max-width: 100%;
+}
+
+main {
+    /* background-color: rgb(46, 42, 85); */
+    height: 1000px;
+    background-image: url("./img/background.jpg");
+}
+
+footer {
+    background-color: rgb(37, 1, 48);
+    height: 100px;
+    max-width: 100%;
+}
