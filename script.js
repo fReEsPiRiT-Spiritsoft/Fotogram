@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     for (let i = 0; i < bilder.length; i++) {
         const img = document.createElement("img");
-        img.src = [i];
+        img.src = bilder[i];
         img.alt = "Oldtimer Bild";
         img.style.width = "200px";
         img.style.height = "200px";

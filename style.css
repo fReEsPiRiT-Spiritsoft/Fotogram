@@ -1,6 +1,13 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
 body {
-    margin: 0px;
-    padding: 0px;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 header {
     background-color: rgb(8, 32, 41);
@@ -17,16 +24,18 @@ header img {
 }
 
 main {
+    flex: 1 0 auto;
     background-color: rgb(5, 23, 30);
-    height: 1000px;
+    height: auto;
     /* background-image: url("./img/background.jpg"); */
-    margin-top: -51px;
+    margin-top: -1px;
 }
 
 footer {
     background-color: rgb(8, 32, 41);
     height: 100px;
     max-width: 100%;
+    flex-shrink: 0;
 }
 .main-text {
     color: white;
@@ -36,4 +45,10 @@ footer {
 .main-text h1 {
     margin: 0;
     color: white;
+}
+.photos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 100px;
 }
