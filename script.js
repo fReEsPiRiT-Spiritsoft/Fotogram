@@ -120,7 +120,7 @@ function initialisiereSeite() {
     schließeDialog(); // Sicherstellen, dass der Dialog zu Beginn geschlossen ist
     setupPfeile();
     showFunnyConent(); // Zufälligen Spruch anzeigen
-    setInterval(showFunnyConent, 10000); // Alle 20 Sekunden neuen Spruch anzeigen
+    setInterval(showFunnyConent, 10000); // Alle 10 Sekunden neuen Spruch anzeigen
 }
 
 // Wenn DOM geladen → starten
