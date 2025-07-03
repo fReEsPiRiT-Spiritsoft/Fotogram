@@ -32,7 +32,8 @@ main {
 }
 .photos img:hover {
     cursor: pointer;
-    opacity: 0.6;
+    opacity: 5.5;
+    box-shadow: rgb(42, 102, 225) 0px 0px 60px;
 }
 
 footer {
@@ -76,8 +77,8 @@ footer {
     max-width: 90vw;
     max-height: 90vh;
     display: flex;
-    flex-direction: column;
     align-items: center;
+    justify-content: center;
 }
 
 .dialog-content img {
@@ -90,6 +91,35 @@ footer {
     position: absolute;
     top: 10px; right: 20px;
     font-size: 2rem;
-    color: #fff;
+    color: #f50404;
     cursor: pointer;
+}
+.dialog-content {
+    position: relative;
+    background: #222;
+    padding: 20px;
+    border-radius: 10px;
+    max-width: 90vw;
+    max-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dialog-arrow {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    user-select: none;
+    margin: 0 10px;
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+.dialog-arrow:hover {
+    opacity: 1;
+}
+#dialog-img {
+    max-width: 70vw;
+    max-height: 70vh;
+    border-radius: 10px;
 }

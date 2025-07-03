@@ -9,7 +9,7 @@ const bilder = [
     "./img/Oldtimer8.jpg"
 ];
 
-
+let aktuellerIndex = 0; // Merkt sich das aktuell angezeigte Bild
 
 
 
@@ -45,10 +45,14 @@ function erstelleBildElement(index) {
 
 // Funktion: Großansicht anzeigen
 function zeigeGroßesBild(index) {
+    aktuellerIndex = index; // Index merken auf welchem Bild ich bin
     const dialog = document.getElementById("bild-dialog");      // Hier wird das Dialog-Element mit der ID "bild-dialog" ausgewählt
     const dialogImg = document.getElementById("dialog-img");    // Hier wird das <img> Element im Dialog ausgewählt
     dialogImg.src = bilder[index];                              // Hier wird das Bild aus dem Array "bilder" ausgewählt der index wird übergeben um das richtige bild zu öffnen
     dialog.style.display = "flex";
+    // Sound abspielen
+    const sound = new Audio("./img/car.mp3"); // Pfad zur Datei
+    sound.play();
 }                           // Hier wird der Dialog angezeigt, indem der Display-Wert auf "flex" gesetzt wird
 
 // Funktion: Dialog schließen
@@ -65,13 +69,27 @@ function setupAußenKlick() {
     });
 }
 
+// Pfeil-Events hinzufügen
+function setupPfeile() {
+    document.getElementById("dialog-arrow-left").addEventListener("click", function (e) {
+        e.stopPropagation(); // Verhindert, dass der Dialog geschlossen wird
+        aktuellerIndex = (aktuellerIndex - 1 + bilder.length) % bilder.length;
+        zeigeGroßesBild(aktuellerIndex);
+    });
+    document.getElementById("dialog-arrow-right").addEventListener("click", function (e) {
+        e.stopPropagation();
+        aktuellerIndex = (aktuellerIndex + 1) % bilder.length;
+        zeigeGroßesBild(aktuellerIndex);
+    });
+}
+
 // Hauptfunktion, wenn Seite geladen ist
 function initialisiereSeite() {
     baueGalerie();
-
     document.getElementById("dialog-close").addEventListener("click", schließeDialog); // Hier wird der Event-Listener für den Schließen-Button im Dialog gesetzt
     setupAußenKlick();  // Hier wird die Funktion aufgerufen, die den Klick außerhalb des Bildes behandelt
     schließeDialog(); // Sicherstellen, dass der Dialog zu Beginn geschlossen ist
+    setupPfeile();
 }
 
 // Wenn DOM geladen → starten
