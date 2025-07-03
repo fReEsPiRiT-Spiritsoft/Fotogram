@@ -123,3 +123,10 @@ footer {
     max-height: 71vh;
     border-radius: 10px;
 }
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.2rem;
+}

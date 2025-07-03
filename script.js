@@ -14,6 +14,20 @@ const bilder = [
     "./img/Oldtimer13.jpg"
 ];
 
+
+const funnyContent = [
+    "„Oldtimer sind wie gute Weine, sie werden mit der Zeit immer besser!“",
+    "“Oldtimer fahren: Wenn sogar der TÜV sagt: ,Okay, Opa, du darfst nochmal los!‘“",
+    "„Mein Auto hat mehr Falten als ich - aber läuft morgens trotzdem besser an.“",
+    "„Ein Oldtimer ist der Beweis, dass Zeit nicht alles kaputt macht - sondern manchmal veredelt.“",
+    "„Oldtimer haben vielleicht keinen Bordcomputer - aber jede Delle erzählt mehr als jedes Navi.“",
+    "„Oldtimer fahren ist wie Zeitreise - nur ohne Fluxkompensator!“",
+    "„Oldtimer sind wie gute Geschichten - sie werden mit jedem Jahr besser erzählt.“",
+    "„Oldtimer: Die einzige Beziehung, in der Rost ein Zeichen von Liebe ist.“",
+    "„Oldtimer sind wie gute Freunde: nicht perfekt, aber ehrlich - und immer für eine Spritztour zu haben.“",
+    "„Ich fahre keinen Oldtimer, ich bewege Geschichte auf Rädern.“"
+]
+
 let aktuellerIndex = 0; // Merkt sich das aktuell angezeigte Bild
 let dialogOpen = false;
 
@@ -90,6 +104,13 @@ function setupPfeile() {
         zeigeGroßesBild(aktuellerIndex, false);
     });
 }
+// Funktion: Zufälligen Spruch anzeigen
+function showFunnyConent() {
+    const spruchIndex = Math.floor(Math.random() * funnyContent.length); // Zufälligen Index für den Spruch generieren
+    const spruch = funnyContent[spruchIndex]; // Den Spruch aus dem Array holen
+    const spruchElement = document.getElementById("funny-contents"); // Das Element im HTML, wo der Spruch angezeigt werden soll
+    spruchElement.textContent = spruch; // Den Spruch in das Element einfügen
+}
 
 // Hauptfunktion, wenn Seite geladen ist
 function initialisiereSeite() {
@@ -98,6 +119,8 @@ function initialisiereSeite() {
     setupAußenKlick();  // Hier wird die Funktion aufgerufen, die den Klick außerhalb des Bildes behandelt
     schließeDialog(); // Sicherstellen, dass der Dialog zu Beginn geschlossen ist
     setupPfeile();
+    showFunnyConent(); // Zufälligen Spruch anzeigen
+    setInterval(showFunnyConent, 10000); // Alle 20 Sekunden neuen Spruch anzeigen
 }
 
 // Wenn DOM geladen → starten
