@@ -79,13 +79,13 @@ function setupAußenKlick() {
 
 // Pfeil-Events hinzufügen
 function setupPfeile() {
-    document.getElementById("dialog-arrow-left").addEventListener("click", function (e) {
-        e.stopPropagation(); // Verhindert, dass der Dialog geschlossen wird
+    document.getElementById("dialog-arrow-left").addEventListener("click", function (backwarts) {
+        backwarts.stopPropagation(); // Verhindert, dass der Dialog geschlossen wird
         aktuellerIndex = (aktuellerIndex - 1 + bilder.length) % bilder.length;
         zeigeGroßesBild(aktuellerIndex, false);
     });
-    document.getElementById("dialog-arrow-right").addEventListener("click", function (e) {
-        e.stopPropagation();
+    document.getElementById("dialog-arrow-right").addEventListener("click", function (forwarts) {
+        forwarts.stopPropagation();
         aktuellerIndex = (aktuellerIndex + 1) % bilder.length;
         zeigeGroßesBild(aktuellerIndex, false);
     });
