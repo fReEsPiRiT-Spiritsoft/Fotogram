@@ -6,10 +6,16 @@ const bilder = [
     "./img/Oldtimer5.jpg",
     "./img/Oldtimer6.jpg",
     "./img/Oldtimer7.jpg",
-    "./img/Oldtimer8.jpg"
+    "./img/Oldtimer8.jpg",
+    "./img/Oldtimer9.jpg",
+    "./img/Oldtimer10.jpg",
+    "./img/Oldtimer11.jpg",
+    "./img/Oldtimer12.jpg",
+    "./img/Oldtimer13.jpg"
 ];
 
 let aktuellerIndex = 0; // Merkt sich das aktuell angezeigte Bild
+let dialogOpen = false;
 
 
 
@@ -36,7 +42,8 @@ function erstelleBildElement(index) {
 
     // Klickfunktion für das Bild
     img.addEventListener("click", function () {
-        zeigeGroßesBild(index);                   //Ein eventListener der auf Click reagiert und die funktion
+        dialogOpen = true; // Dialog wird geöffnet
+        zeigeGroßesBild(index, true);                   //Ein eventListener der auf Click reagiert und die funktion
     });                                           //  zeigeGroßesBild ausführt
 
     return img;
@@ -44,15 +51,16 @@ function erstelleBildElement(index) {
 
 
 // Funktion: Großansicht anzeigen
-function zeigeGroßesBild(index) {
+function zeigeGroßesBild(index, mitSound = false) {
     aktuellerIndex = index; // Index merken auf welchem Bild ich bin
     const dialog = document.getElementById("bild-dialog");      // Hier wird das Dialog-Element mit der ID "bild-dialog" ausgewählt
     const dialogImg = document.getElementById("dialog-img");    // Hier wird das <img> Element im Dialog ausgewählt
     dialogImg.src = bilder[index];                              // Hier wird das Bild aus dem Array "bilder" ausgewählt der index wird übergeben um das richtige bild zu öffnen
     dialog.style.display = "flex";
-    // Sound abspielen
-    const sound = new Audio("./img/car.mp3"); // Pfad zur Datei
-    sound.play();
+    if (mitSound) {
+        const sound = new Audio("./img/car.mp3");
+        sound.play();
+    }
 }                           // Hier wird der Dialog angezeigt, indem der Display-Wert auf "flex" gesetzt wird
 
 // Funktion: Dialog schließen
@@ -74,12 +82,12 @@ function setupPfeile() {
     document.getElementById("dialog-arrow-left").addEventListener("click", function (e) {
         e.stopPropagation(); // Verhindert, dass der Dialog geschlossen wird
         aktuellerIndex = (aktuellerIndex - 1 + bilder.length) % bilder.length;
-        zeigeGroßesBild(aktuellerIndex);
+        zeigeGroßesBild(aktuellerIndex, false);
     });
     document.getElementById("dialog-arrow-right").addEventListener("click", function (e) {
         e.stopPropagation();
         aktuellerIndex = (aktuellerIndex + 1) % bilder.length;
-        zeigeGroßesBild(aktuellerIndex);
+        zeigeGroßesBild(aktuellerIndex, false);
     });
 }
 
