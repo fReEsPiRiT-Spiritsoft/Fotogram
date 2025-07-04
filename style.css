@@ -35,6 +35,9 @@ main {
     opacity: 5.5;
     box-shadow: rgb(42, 102, 225) 0px 0px 60px;
 }
+.photos img {
+    object-fit: cover;
+}
 
 footer {
     background-color: rgb(8, 32, 41);
@@ -140,20 +143,20 @@ footer {
     #bild-dialog {
         /* display: none !important; */
     }
-    .d-done {
+    /* .d-done {
         display: none !import;
-    }
-    .dialog-content {
+    } */
+    /* .dialog-content {
         flex-direction: column;
         align-items: center;
-        max-width: 98vw;      /* Fast volle Bildschirmbreite */
-        max-height: 98vh;     /* Fast volle Bildschirmhöhe */
+        max-width: 98vw;      
+        max-height: 98vh;     
         padding: 5vw 2vw; 
-    }
+    } */
     #dialog-img {
-        max-width: 89vw;      /* Bild fast so breit wie der Bildschirm */
+        max-width: 89vw;      
         max-height: 65vh; 
-        order: 1;    /* Bild nimmt mehr Höhe ein */
+        order: 1;    
     }
     .dialog-img-row {
         flex-direction: column;
@@ -170,14 +173,6 @@ footer {
         order: 2;
 
     }
-    .dialog-arrows {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        width: 100%;
-        margin-top: 10px;
-        gap: 30vw; 
-    }
-
+   
     
 }
