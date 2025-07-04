@@ -123,6 +123,11 @@ footer {
     max-height: 71vh;
     border-radius: 10px;
 }
+.dialog-img-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 footer {
     display: flex;
     align-items: center;
@@ -133,7 +138,10 @@ footer {
 
 @media (max-width: 550px) {
     #bild-dialog {
-        display: none;
+        /* display: none !important; */
+    }
+    .d-done {
+        display: none !import;
     }
     .dialog-content {
         flex-direction: column;
@@ -144,7 +152,12 @@ footer {
     }
     #dialog-img {
         max-width: 89vw;      /* Bild fast so breit wie der Bildschirm */
-        max-height: 65vh;     /* Bild nimmt mehr Höhe ein */
+        max-height: 65vh; 
+        order: 1;    /* Bild nimmt mehr Höhe ein */
+    }
+    .dialog-img-row {
+        flex-direction: column;
+        gap: 10px;
     }
     
     .dialog-content img {
@@ -154,7 +167,8 @@ footer {
     .dialog-arrow {
         width: 30px;
         height: 30px;
-        
+        order: 2;
+
     }
     .dialog-arrows {
         display: flex;
