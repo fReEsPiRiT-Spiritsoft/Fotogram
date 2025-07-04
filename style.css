@@ -130,3 +130,40 @@ footer {
     color: white;
     font-size: 1.2rem;
 }
+
+@media (max-width: 550px) {
+    #bild-dialog {
+        display: none;
+    }
+    .dialog-content {
+        flex-direction: column;
+        align-items: center;
+        max-width: 98vw;      /* Fast volle Bildschirmbreite */
+        max-height: 98vh;     /* Fast volle Bildschirmhöhe */
+        padding: 5vw 2vw; 
+    }
+    #dialog-img {
+        max-width: 89vw;      /* Bild fast so breit wie der Bildschirm */
+        max-height: 65vh;     /* Bild nimmt mehr Höhe ein */
+    }
+    
+    .dialog-content img {
+        max-width: 90vw;
+        max-height: 80vh;
+    }
+    .dialog-arrow {
+        width: 30px;
+        height: 30px;
+        
+    }
+    .dialog-arrows {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        width: 100%;
+        margin-top: 10px;
+        gap: 30vw; 
+    }
+
+    
+}

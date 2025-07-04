@@ -1,4 +1,4 @@
-const bilder = [
+const pictures = [
     "./img/Oldtimer1.jpg",
     "./img/Oldtimer2.jpg",
     "./img/Oldtimer3.jpg",
@@ -28,26 +28,26 @@ const funnyContent = [
     "„Ich fahre keinen Oldtimer, ich bewege Geschichte auf Rädern.“"
 ]
 
-let aktuellerIndex = 0; // Merkt sich das aktuell angezeigte Bild
+let currentIndex = 0; // Merkt sich das aktuell angezeigte Bild
 let dialogOpen = false;
 
 
 
 // Funktion: for schleife zum ermitteln wie viele elemte im array sind
-function baueGalerie() {
+function buildGalerie() {
     const photosSection = document.querySelector(".photos");
-    for (let i = 0; i < bilder.length; i++) {                 //hier wird die section mit der Classe .photos ausgewählt
-        const bild = erstelleBildElement(i);                    //die forschleufe läuft so lange wie elemente im array bilder sind
-        photosSection.appendChild(bild);            //hier wird die anzahl der bilder an die erstelleBildElement funktion übergeben
+    for (let i = 0; i < pictures.length; i++) {                 //hier wird die section mit der Classe .photos ausgewählt
+        const bild = createPicElement(i);                    //die forschleufe läuft so lange wie elemente im array pictures sind
+        photosSection.appendChild(bild);            //hier wird die anzahl der pictures an die createPicElement funktion übergeben
     }
 }
 
 
 
 // Funktion:<img> Element erstellen
-function erstelleBildElement(index) {
+function createPicElement(index) {
     const img = document.createElement("img"); // Neues Bild-Element im html erstellen
-    img.src = bilder[index];
+    img.src = pictures[index];
     img.alt = "Oldtimer Bild";
     img.style.width = "200px";
     img.style.height = "200px";                 // hier werden die css-Eigenschaften gesetzt
@@ -57,51 +57,51 @@ function erstelleBildElement(index) {
     // Klickfunktion für das Bild
     img.addEventListener("click", function () {
         dialogOpen = true; // Dialog wird geöffnet
-        zeigeGroßesBild(index, true);                   //Ein eventListener der auf Click reagiert und die funktion
-    });                                           //  zeigeGroßesBild ausführt
+        showBigPic(index, true);                   //Ein eventListener der auf Click reagiert und die funktion
+    });                                           //  showBigPic ausführt
 
     return img;
 }
 
 
 // Funktion: Großansicht anzeigen
-function zeigeGroßesBild(index, mitSound = false) {
-    aktuellerIndex = index; // Index merken auf welchem Bild ich bin
+function showBigPic(index, withSound = false) {
+    currentIndex = index; // Index merken auf welchem Bild ich bin
     const dialog = document.getElementById("bild-dialog");      // Hier wird das Dialog-Element mit der ID "bild-dialog" ausgewählt
     const dialogImg = document.getElementById("dialog-img");    // Hier wird das <img> Element im Dialog ausgewählt
-    dialogImg.src = bilder[index];                              // Hier wird das Bild aus dem Array "bilder" ausgewählt der index wird übergeben um das richtige bild zu öffnen
+    dialogImg.src = pictures[index];                              // Hier wird das Bild aus dem Array "pictures" ausgewählt der index wird übergeben um das richtige bild zu öffnen
     dialog.style.display = "flex";
-    if (mitSound) {
+    if (withSound) {
         const sound = new Audio("./img/car.mp3");
         sound.play();
     }
 }                           // Hier wird der Dialog angezeigt, indem der Display-Wert auf "flex" gesetzt wird
 
 // Funktion: Dialog schließen
-function schließeDialog() {
+function closeDialog() {
     document.getElementById("bild-dialog").style.display = "none";   // hier wird einfach die css klasse display auf none gesetzt, damit der Dialog geschlossen wird
 }
 
 // Funktion: Klick außerhalb des Bildes
-function setupAußenKlick() {
+function setupOutClick() {
     document.getElementById("bild-dialog").addEventListener("click", function (e) {
         if (e.target === this) {                     // Hier wird überprüft, ob der Klick auf das Dialog-Element selbst erfolgt ist
-            schließeDialog();                          // Wenn ja, wird der Dialog geschlossen
+            closeDialog();                          // Wenn ja, wird der Dialog geschlossen
         }
     });
 }
 
 // Pfeil-Events hinzufügen
-function setupPfeile() {
+function setupArrow() {
     document.getElementById("dialog-arrow-left").addEventListener("click", function (backwarts) {
         backwarts.stopPropagation(); // Verhindert, dass der Dialog geschlossen wird
-        aktuellerIndex = (aktuellerIndex - 1 + bilder.length) % bilder.length;
-        zeigeGroßesBild(aktuellerIndex, false);
+        currentIndex = (currentIndex - 1 + pictures.length) % pictures.length;
+        showBigPic(currentIndex, false);
     });
     document.getElementById("dialog-arrow-right").addEventListener("click", function (forwarts) {
         forwarts.stopPropagation();
-        aktuellerIndex = (aktuellerIndex + 1) % bilder.length;
-        zeigeGroßesBild(aktuellerIndex, false);
+        currentIndex = (currentIndex + 1) % pictures.length;
+        showBigPic(currentIndex, false);
     });
 }
 // Funktion: Zufälligen Spruch anzeigen
@@ -114,13 +114,13 @@ function showFunnyConent() {
 
 // Hauptfunktion, wenn Seite geladen ist
 function initialisiereSeite() {
-    baueGalerie();
-    document.getElementById("dialog-close").addEventListener("click", schließeDialog); // Hier wird der Event-Listener für den Schließen-Button im Dialog gesetzt
-    setupAußenKlick();  // Hier wird die Funktion aufgerufen, die den Klick außerhalb des Bildes behandelt
-    schließeDialog(); // Sicherstellen, dass der Dialog zu Beginn geschlossen ist
-    setupPfeile();
+    buildGalerie();
+    document.getElementById("dialog-close").addEventListener("click", closeDialog); // Hier wird der Event-Listener für den Schließen-Button im Dialog gesetzt
+    setupOutClick();  // Hier wird die Funktion aufgerufen, die den Klick außerhalb des Bildes behandelt
+    closeDialog(); // Sicherstellen, dass der Dialog zu Beginn geschlossen ist
+    setupArrow();
     showFunnyConent(); // Zufälligen Spruch anzeigen
-    setInterval(showFunnyConent, 10000); // Alle 10 Sekunden neuen Spruch anzeigen
+    setInterval(showFunnyConent, 10000); // Alle 20 Sekunden neuen Spruch anzeigen
 }
 
 // Wenn DOM geladen → starten
