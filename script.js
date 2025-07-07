@@ -28,9 +28,9 @@ const funnyContent = [
     "„Ich fahre keinen Oldtimer, ich bewege Geschichte auf Rädern.“"
 ]
 
+
 let currentIndex = 0; // Merkt sich das aktuell angezeigte Bild
 let dialogOpen = false;
-
 
 
 // Funktion: for schleife zum ermitteln wie viele elemte im array sind
@@ -41,7 +41,6 @@ function buildGalerie() {
         photosSection.appendChild(bild);            //hier wird die anzahl der pictures an die createPicElement funktion übergeben
     }
 }
-
 
 
 // Funktion:<img> Element erstellen
@@ -77,6 +76,7 @@ function showBigPic(index, withSound = false) {
     }
 }                           // Hier wird der Dialog angezeigt, indem der Display-Wert auf "flex" gesetzt wird
 
+
 // Funktion: Dialog schließen
 function closeDialog() {
     document.getElementById("bild-dialog").style.display = "none";   // hier wird einfach die css klasse display auf none gesetzt, damit der Dialog geschlossen wird
@@ -91,6 +91,7 @@ function setupOutClick() {
     });
 }
 
+
 // Pfeil-Events hinzufügen
 function setupArrow() {
     document.getElementById("dialog-arrow-left").addEventListener("click", function (backwarts) {
@@ -104,6 +105,8 @@ function setupArrow() {
         showBigPic(currentIndex, false);
     });
 }
+
+
 // Funktion: Zufälligen Spruch anzeigen
 function showFunnyConent() {
     const spruchIndex = Math.floor(Math.random() * funnyContent.length); // Zufälligen Index für den Spruch generieren
@@ -111,6 +114,7 @@ function showFunnyConent() {
     const spruchElement = document.getElementById("funny-contents"); // Das Element im HTML, wo der Spruch angezeigt werden soll
     spruchElement.textContent = spruch; // Den Spruch in das Element einfügen
 }
+
 
 // Hauptfunktion, wenn Seite geladen ist
 function initialisiereSeite() {
@@ -122,6 +126,7 @@ function initialisiereSeite() {
     showFunnyConent(); // Zufälligen Spruch anzeigen
     setInterval(showFunnyConent, 10000); // Alle 20 Sekunden neuen Spruch anzeigen
 }
+
 
 // Wenn DOM geladen → starten
 document.addEventListener("DOMContentLoaded", initialisiereSeite);
